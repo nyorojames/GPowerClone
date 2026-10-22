@@ -1,0 +1,47 @@
+id,mode,k_groups,effect_size_f,alpha,power,total_N,df1,df2,noncentrality,critical_F,actual_power,screenshot_file,probes,gui_message_or_notes
+v001,a-priori,3,0.1,0.05,0.8,969,2,966,9.6900000,3.0050418,0.8011010,v001.png,typical small effect; checks divisibility of N by k,
+v002,a-priori,3,0.1,0.05,0.95,1548,2,1545,15.4800000,3.0015485,0.9500866,v002.png,typical small effect; high power requirement,
+v003,a-priori,3,0.25,0.05,0.8,159,2,156,9.9375000,3.0540042,0.8048873,v003.png,typical medium effect; standard benchmark,
+v004,a-priori,3,0.25,0.05,0.9,207,2,204,12.9375000,3.0401584,0.9022417,v004.png,typical medium effect; 90% power,
+v005,a-priori,3,0.25,0.05,0.95,252,2,249,15.7500000,3.0320649,0.9514888,v005.png,typical medium effect; high power benchmark,
+v006,a-priori,3,0.4,0.05,0.8,66,2,63,10.5600000,3.1428085,0.8180744,v006.png,typical large effect,
+v007,a-priori,3,0.4,0.05,0.95,102,2,99,16.3200000,3.0882396,0.9547295,v007.png,typical large effect; high power,
+v008,a-priori,3,0.25,0.01,0.8,228,2,225,14.2500000,4.7007255,0.8029054,v008.png,stricter alpha threshold (0.01),
+v009,a-priori,3,0.25,0.01,0.95,336,2,333,21.0000000,4.6694479,0.9506719,v009.png,stricter alpha (0.01) and high power (0.95),
+v010,a-priori,3,0.25,0.1,0.8,126,2,123,7.8750000,2.3462330,0.8008668,v010.png,relaxed alpha threshold (0.10),
+v011,a-priori,4,0.1,0.05,0.8,1096,3,1092,10.9600000,2.6130528,0.8007324,v011.png,typical 4 groups; checks N % 4 == 0,
+v012,a-priori,4,0.1,0.05,0.95,1724,3,1720,17.2400000,2.6100759,0.9503691,v012.png,typical 4 groups; high power,
+v013,a-priori,4,0.25,0.05,0.8,180,3,176,11.2500000,2.6559389,0.8039869,v013.png,typical 4 groups; medium effect,
+v014,a-priori,4,0.25,0.05,0.95,280,3,276,17.5000000,2.6373109,0.9509908,v014.png,typical 4 groups; medium effect high power,
+v015,a-priori,4,0.4,0.05,0.8,76,3,72,12.1600000,2.7318070,0.8234006,v015.png,typical 4 groups; large effect,
+v016,a-priori,4,0.4,0.05,0.95,112,3,108,17.9200000,2.6886915,0.9513019,v016.png,typical 4 groups; large effect high power,
+v017,a-priori,5,0.1,0.05,0.8,1200,4,1195,12.0000000,2.3793764,0.8006464,v017.png,typical 5 groups; checks N % 5 == 0,
+v018,a-priori,5,0.1,0.05,0.95,1865,4,1860,18.6500000,2.3767119,0.9503488,v018.png,typical 5 groups; high power,
+v019,a-priori,5,0.25,0.05,0.8,200,4,195,12.5000000,2.4179625,0.8097710,v019.png,typical 5 groups; medium effect,
+v020,a-priori,5,0.25,0.05,0.95,305,4,300,19.0625000,2.4017397,0.9521313,v020.png,typical 5 groups; medium effect high power,
+v021,a-priori,5,0.4,0.05,0.8,80,4,75,12.8000000,2.4936960,0.8030845,v021.png,typical 5 groups; large effect,
+v022,a-priori,5,0.4,0.05,0.95,125,4,120,20.0000000,2.4472365,0.9569163,v022.png,typical 5 groups; large effect high power,
+v023,a-priori,3,0.05,0.05,0.8,3858,2,3855,9.6450000,2.9980615,0.8001229,v023.png,very small effect; tests large sample convergence,
+v024,a-priori,3,0.02,0.05,0.8,24090,2,24087,9.6360000,2.9961049,0.8000049,v024.png,extremely small effect; checks convergence stability,
+v025,a-priori,3,0.001,0.05,0.8,9634692,2,9634689,9.6346920,2.9957332,0.8000000,v025.png,extreme small effect; tests search upper bound & numerical limits,
+v026,a-priori,3,1.0,0.05,0.8,15,2,12,15.0000000,3.8852938,0.8695976,v026.png,very large effect (f=1.0); checks lower bound of N,
+v027,a-priori,3,2.0,0.05,0.95,9,2,6,36.0000000,5.1432528,0.9853857,v027.png,extreme large effect (f=2.0); tests minimum N = 2k condition,
+v028,a-priori,3,5.0,0.05,0.95,6,2,3,150,9.5520945,0.9998838,v028.png,massive effect (f=5.0); checks absolute floor of N,
+v029,a-priori,2,0.25,0.05,0.8,128,1,126,8.0000000,3.9163246,0.8014596,v029.png,minimum valid groups (k=2); equivalence with independent t-test,
+v030,a-priori,2,0.4,0.05,0.95,84,1,82,13.4400000,3.9573883,0.9518269,v030.png,minimum valid groups (k=2); high power,
+v031,a-priori,10,0.25,0.05,0.8,260,9,250,16.2500000,1.9174493,0.8019886,v031.png,large group count (k=10); df1=9,
+v032,a-priori,20,0.25,0.05,0.8,360,19,340,22.5000000,1.6172211,0.8237556,v032.png,large group count (k=20); df1=19,
+v033,a-priori,100,0.25,0.05,0.8,800,99,700,50.0000000,1.2675740,0.8706091,v033.png,very large group count (k=100); checks GUI upper range limit for k,
+v034,a-priori,3,0.25,0.05,0.05,6,2,3,0.3750000,9.5520945,0.0622405,v034.png,boundary case: power equal to alpha (1 - beta = alpha),
+v035,a-priori,3,0.25,0.05,0.04,,,,,,,v035.png,boundary case: power strictly less than alpha; tests error dialog,Dialog: Power must be greater than or equal to alpha.
+v036,a-priori,3,0.25,0.05,1.0,,,,,,,v036.png,boundary case: power = 1.0; tests upper open/closed boundary,"Dialog: Power is outside the admissible range (1e-07, 1)."
+v037,a-priori,3,0.25,0.05,0.999,471,2,468,29.4375000,3.0149905,0.9990202,v037.png,near-boundary case: power = 0.999; high asymptotic behavior,
+v038,a-priori,3,0.25,0.05,0.0,,,,,,,v038.png,boundary case: power = 0.0; tests lower boundary rejection,"Dialog: Power is outside the admissible range (1e-07, 1)."
+v039,a-priori,3,0.25,0.0,0.8,,,,,,,v039.png,boundary case: alpha = 0.0; tests alpha admissibility,"Dialog: Alpha is outside the admissible range (1e-07, 1)."
+v040,a-priori,3,0.25,1.0,0.8,,,,,,,v040.png,boundary case: alpha = 1.0; tests alpha admissibility,"Dialog: Alpha is outside the admissible range (1e-07, 1)."
+v041,a-priori,3,0.0,0.05,0.8,,,,,,,v041.png,boundary case: effect size f = 0.0; tests f admissibility,"Dialog: Effect size f is outside the admissible range (1e-06, 50)."
+v042,a-priori,3,-0.25,0.05,0.8,,,,,,,v042.png,invalid input: negative effect size f; tests sign rejection,"Dialog: Effect size f is outside the admissible range (1e-06, 50)."
+v043,a-priori,1,0.25,0.05,0.8,,,,,,,v043.png,invalid input: k = 1; tests minimum group count rule (k >= 2),Dialog: There must be at least 2 groups.
+v044,a-priori,0,0.25,0.05,0.8,,,,,,,v044.png,invalid input: k = 0; tests zero group count rejection,Dialog: There must be at least 2 groups.
+v045,a-priori,3,abc,0.05,0.8,,,,,,,v045.png,invalid input: non-numeric string in effect size edit box,"Dialog: Effect size f is outside the admissible range (1e-06, 50)."
+v046,a-priori,3.5,0.25,0.05,0.8,180,3,176,11.2500000,2.6559389,0.8039869,v046.png,hidden behaviour: non-integer group count k; tests rounding vs error,

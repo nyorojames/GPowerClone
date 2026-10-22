@@ -1,0 +1,48 @@
+id,k_groups,effect_size_f,alpha,power,noncentrality,critical_F,df1,df2,total_N,actual_power,screenshot_file,probe,gui_message_or_notes
+v001,3,0.1,0.05,0.8,9.6900000,3.0050418,2,966,969,0.8011010,v001.png,typical; divisibility of N by k,
+v002,3,0.1,0.05,0.95,15.4800000,3.0015485,2,1545,1548,0.9500866,v002.png,typical; divisibility of N by k,
+v003,3,0.25,0.05,0.8,9.9375000,3.0540042,2,156,159,0.8048873,v003.png,typical; divisibility of N by k,
+v004,3,0.25,0.05,0.95,15.7500000,3.0320649,2,249,252,0.9514888,v004.png,typical; divisibility of N by k,
+v005,3,0.4,0.05,0.8,10.5600000,3.1428085,2,63,66,0.8180744,v005.png,typical; divisibility of N by k,
+v006,3,0.4,0.05,0.95,16.3200000,3.0882396,2,99,102,0.9547295,v006.png,typical; divisibility of N by k,
+v007,4,0.1,0.05,0.8,10.9600000,2.6130528,3,1092,1096,0.8007324,v007.png,typical; divisibility of N by k,
+v008,4,0.1,0.05,0.95,17.2400000,2.6100759,3,1720,1724,0.9503691,v008.png,typical; divisibility of N by k,
+v009,4,0.25,0.05,0.8,11.2500000,2.6559389,3,176,180,0.8039869,v009.png,typical; divisibility of N by k,
+v010,4,0.25,0.05,0.95,17.5000000,2.6373109,3,276,280,0.9509908,v010.png,typical; divisibility of N by k,
+v011,4,0.4,0.05,0.8,12.1600000,2.7318070,3,72,76,0.8234006,v011.png,typical; divisibility of N by k,
+v012,4,0.4,0.05,0.95,17.9200000,2.6886915,3,108,112,0.9513019,v012.png,typical; divisibility of N by k,
+v013,5,0.1,0.05,0.8,12.0000000,2.3793764,4,1195,1200,0.8006464,v013.png,typical; divisibility of N by k,
+v014,5,0.1,0.05,0.95,18.6500000,2.3767119,4,1860,1865,0.9503488,v014.png,typical; divisibility of N by k,
+v015,5,0.25,0.05,0.8,12.5000000,2.4179625,4,195,200,0.8097710,v015.png,typical; divisibility of N by k,
+v016,5,0.25,0.05,0.95,19.0625000,2.4017397,4,300,305,0.9521313,v016.png,typical; divisibility of N by k,
+v017,5,0.4,0.05,0.8,12.8000000,2.4936960,4,75,80,0.8030845,v017.png,typical; divisibility of N by k,
+v018,5,0.4,0.05,0.95,20.0000000,2.4472365,4,120,125,0.9569163,v018.png,typical; divisibility of N by k,
+v019,3,0.25,0.01,0.8,14.2500000,4.7007255,2,225,228,0.8029054,v019.png,alpha variation,
+v020,3,0.25,0.01,0.95,21.0000000,4.6694479,2,333,336,0.9506719,v020.png,alpha variation,
+v021,3,0.25,0.1,0.8,7.8750000,2.3462330,2,123,126,0.8008668,v021.png,alpha variation,
+v022,3,0.25,0.1,0.95,13.3125000,2.3280178,2,210,213,0.9519553,v022.png,alpha variation,
+v023,3,0.25,0.05,0.9,12.9375000,3.0401584,2,204,207,0.9022417,v023.png,power variation,
+v024,3,0.25,0.05,0.99,21.7500000,3.0218963,2,345,348,0.9904577,v024.png,power variation,
+v025,3,0.05,0.05,0.8,9.6450000,2.9980615,2,3855,3858,0.8001229,v025.png,"small effect: convergence, large N",
+v026,3,0.02,0.05,0.8,9.6360000,2.9961049,2,24087,24090,0.8000049,v026.png,very small effect: large N / upper limit,
+v027,3,0.001,0.05,0.8,9.6346920,2.9957332,2,9634689,9634692,0.8000000,v027.png,tiny effect: upper limit or error,
+v028,3,1.0,0.05,0.8,15.0000000,3.8852938,2,12,15,0.8695976,v028.png,large effect: lower bound of N,
+v029,3,2.0,0.05,0.95,36.0000000,5.1432528,2,6,9,0.9853857,v029.png,large effect: lower bound of N,
+v030,3,5.0,0.05,0.95,150,9.5520945,2,3,6,0.9998838,v030.png,extreme effect: lower bound of N,
+v031,2,0.25,0.05,0.8,8.0000000,3.9163246,1,126,128,0.8014596,v031.png,k=2 (compare with two-group t test),
+v032,10,0.25,0.05,0.8,16.2500000,1.9174493,9,250,260,0.8019886,v032.png,large k,
+v033,20,0.25,0.05,0.8,22.5000000,1.6172211,19,340,360,0.8237556,v033.png,large k,
+v034,100,0.25,0.05,0.8,50.0000000,1.2675740,99,700,800,0.8706091,v034.png,very large k: GUI maximum?,
+v035,3,0.25,0.05,0.05,0.3750000,9.5520945,2,3,6,0.0622405,v035.png,power equal to alpha,
+v036,3,0.25,0.05,0.04,,,,,,,v036.png,power below alpha,Dialog: Power must be greater than or equal to alpha.
+v037,3,0.25,0.05,0.999,29.4375000,3.0149905,2,468,471,0.9990202,v037.png,power near 1,
+v038,3,0.25,0.05,1,,,,,,,v038.png,power = 1,"Dialog: Power is outside the admissible range (1e-07, 1)."
+v039,3,0.25,0.05,0,,,,,,,v039.png,power = 0,"Dialog: Power is outside the admissible range (1e-07, 1)."
+v040,3,0.25,0,0.8,,,,,,,v040.png,alpha = 0,"Dialog: Alpha is outside the admissible range (1e-07, 1)."
+v041,3,0.25,1,0.8,,,,,,,v041.png,alpha = 1,"Dialog: Alpha is outside the admissible range (1e-07, 1)."
+v042,3,0,0.05,0.8,,,,,,,v042.png,f = 0,"Dialog: Effect size f is outside the admissible range (1e-06, 50)."
+v043,3,-0.25,0.05,0.8,,,,,,,v043.png,negative f,"Dialog: Effect size f is outside the admissible range (1e-06, 50)."
+v044,1,0.25,0.05,0.8,,,,,,,v044.png,k = 1,Dialog: There must be at least 2 groups.
+v045,0,0.25,0.05,0.8,,,,,,,v045.png,k = 0,Dialog: There must be at least 2 groups.
+v046,3,abc,0.05,0.8,,,,,,,v046.png,non-numeric input (try typing letters),"Dialog: Effect size f is outside the admissible range (1e-06, 50)."
+v047,3.5,0.25,0.05,0.8,11.2500000,2.6559389,3,176,180,0.8039869,v047.png,non-integer k,

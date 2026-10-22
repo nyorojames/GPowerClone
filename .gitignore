@@ -1,0 +1,35 @@
+# G*Power binaries and archives (Hard Rule 2)
+GPowerNT.exe
+GPower*.exe
+GPowerWin_*/
+GPowerWin_*.zip
+*.bin
+*.idb
+*.i64
+*.gzf
+
+# Decompiled and disassembly outputs
+*.asm
+*.decomp
+decompiled/
+disassembly/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+.venv/
+env/
+.env
+tools/__pycache__/
+scratch/
+ClassTranscript/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+.DS_Store

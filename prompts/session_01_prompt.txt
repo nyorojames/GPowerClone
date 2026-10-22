@@ -1,0 +1,46 @@
+You are helping me with a university assignment (YZM301 Teardown Sprint). I work alone (group K3), on Windows, in Antigravity.
+
+GOAL
+Reverse engineer ONE calculation of G*Power 3.1.9.7 using REA and Ghidra, document findings with evidence, rewrite it in a clean room, and prove it matches the original with differential testing. The rewrite is called "gpower-clone". It must NEVER be called or presented as G*Power.
+
+TARGET
+- Test family: F test, one-way ANOVA (G*Power: F tests > ANOVA: Fixed effects, omnibus, one-way). Test name in the CLI: anova-oneway.
+- Mode: a-priori (compute total N). Post hoc (compute power) only if a-priori already matches.
+- Program: GPowerNT.exe, native 32-bit x86 PE, 2,287,616 bytes, SHA-256 C63E6A133EB6372932F810C08CC33DC35A06D1DDB658F897BD6C34A754EFC812
+- Download zip SHA-256: 3BB7F1F2478D74EE5BA701AE7F849373CF2B8A11F6B6216C7C6B236DB7861199
+- Location (OUTSIDE the repo): C:\Users\user\Downloads\GPowerWin_3.1.9.7\GPower_3.1.9.7_143\GPowerNT.exe
+
+KNOWN FACTS FROM MY OWN REA RUNS
+- inspect-artifact, evidence ev_1850bec8494f58a9f451019f41c84c6fd0267ff4d9903d047c97ea00b653017d: single PE file, no child entries.
+- inspect-managed-artifact, evidence ev_842eb084a5ee595487abb410dd6cef57cce2b55a8cb2bac737b1f8ddbc0f2c2a: not managed (no CLI data directory), x86, PE32, 4 sections.
+- Native analysis needs Ghidra 12.1.x plus JDK 21 (GHIDRA_INSTALL_DIR).
+
+HARD RULES
+1. Only G*Power 3.1.9.7 is analysed. Nothing else.
+2. NEVER put GPowerNT.exe, the zip, decompiled code, disassembly or pasted decompiler output in the repo or in src/. .gitignore must contain GPowerNT.exe, GPower*.exe, GPowerWin_*/ and GPowerWin_*.zip from the first commit. LEDGER.md may contain short quotes and function addresses, nothing more.
+3. NEVER invent, estimate or "remember" G*Power outputs. A reference value exists only if it is in oracle/gpower_vectors.csv, which I fill in by hand from the GUI with a screenshot. If you need a value you do not have, ask me.
+4. Evidence tags in LEDGER.md: [DOK] = stated in the manual or a paper; [REA] = proven from the binary (function address or string reference); [AJAN] = your inference with no evidence. Only [REA] lines earn credit. Seek behaviour the manual does NOT document: rounding, how N is searched, the stopping condition, minimum N, divisibility by the number of groups, reaction to invalid input.
+5. If you cannot name the function or string that supports a claim, tag it [AJAN] and say which test will check it.
+6. One calculation engine in src/engine/. The CLI (and any later MCP/agent layer) is a thin adapter with no calculation logic.
+7. Log every mistake of yours in HALLUCINATIONS.md: what you claimed, how it was noticed, which test caught it. Be honest; never invent entries.
+8. REA tools may be lazy-loaded through call_mcp_tool. If a tool seems missing, search for it by name before concluding it is unavailable.
+9. Ask me before downloading or installing anything. Show me the exact official URL first.
+10. Real patient data is never used. Only fictional research scenarios.
+
+CLI CONTRACT STATUS
+The official CONTRACT.md for anova-oneway was never shared with me. Only the t2-indep example is known:
+  gpower-clone --test t2-indep --mode a-priori --tails 2 --d 0.5 --alpha 0.05 --power 0.95 --ratio 1
+  {"n1":105,"n2":105,"n_total":210,"actual_power":0.9501,"critical":1.9714,"df":208,"ncp":3.6228}
+Known for all tests: single-line JSON on success; on invalid input {"error":"<description>"} plus a nonzero exit code.
+For anova-oneway everything else is a PROVISIONAL ASSUMPTION (see Session 1, Step 6). Mark it as such everywhere. All flag names and output key names live in ONE mapping file in the CLI layer so they can be replaced in minutes.
+
+REPO LAYOUT
+.gitignore, README.md, SPEC.md (Gherkin), LEDGER.md, HALLUCINATIONS.md, AGENT_COST.md
+prompts/ (first prompt of each session, saved verbatim)
+oracle/gpower_vectors.csv + oracle/screenshots/ (I fill by hand)
+src/engine/, src/cli/
+tests/ (differential, contract, unit), tests/data/library_vectors.csv
+
+AGENT_COST.md: keep a running note of which agent you are, number of iterations, and what you would do differently. I will add token and cost figures from the IDE myself; do not guess token counts.
+
+Ask me before doing anything outside this scope.
