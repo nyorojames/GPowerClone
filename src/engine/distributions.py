@@ -5,19 +5,11 @@ functions using Lanczos gamma approximation, continued-fraction incomplete beta,
 and Poisson mixture series expansion.
 
 SPEC.md References:
-- Section 3.4: Central F distribution critical value F_crit.
-- Section 3.5: Noncentral F distribution survival function for statistical power.
-- Section 9.3: Numerical agreement to 7 decimal places.
+- Section 4.1: Central F distribution critical value F_crit.
+- Section 4.1: Noncentral F distribution survival function for statistical power.
 """
 
 import math
-
-# Optional scipy integration: Use scipy for distribution functions only as SPEC.md allows
-try:
-    from scipy.stats import f as _scipy_f, ncf as _scipy_ncf  # type: ignore
-    _USE_SCIPY = True
-except ImportError:
-    _USE_SCIPY = False
 
 
 def log_gamma(x: float) -> float:
@@ -48,10 +40,7 @@ def log_gamma(x: float) -> float:
 
 
 def _betacf(a: float, b: float, x: float, max_it: int = 500, eps: float = 3e-14) -> float:
-    """Evaluates continued fraction for incomplete beta function by modified Lentz's method.
-
-    SPEC.md Section 9.3: Continued fraction series expansion.
-    """
+    """Evaluates continued fraction for incomplete beta function by modified Lentz's method."""
     fpmin = 1e-30
     qab = a + b
     qap = a + 1.0
@@ -136,7 +125,7 @@ def f_sf(f_val: float, df1: float, df2: float) -> float:
 def f_inv_sf(alpha: float, df1: float, df2: float, tol: float = 1e-12) -> float:
     """Inverse survival function: finds critical F such that P(F >= F_crit) == alpha.
 
-    SPEC.md Section 3.4:
+    SPEC.md Section 4.1:
     P(F(df1, df2) >= F_crit) = alpha <=> F_crit = F_central^-1(1 - alpha; df1, df2)
     """
     if not (0.0 < alpha < 1.0):
@@ -152,7 +141,8 @@ def f_inv_sf(alpha: float, df1: float, df2: float, tol: float = 1e-12) -> float:
     for _ in range(120):
         mid = (low + high) / 2.0
         val = f_sf(mid, df1, df2)
-        if abs(val - alpha) < tol or (high - low) < 1e-14:
+        diff = val - alpha
+        if abs(diff) <= 1e-15 * max(alpha, 1.0) or (high - low) <= 1e-14 * max(mid, 1.0):
             return mid
         if val > alpha:
             low = mid
@@ -162,14 +152,30 @@ def f_inv_sf(alpha: float, df1: float, df2: float, tol: float = 1e-12) -> float:
     return (low + high) / 2.0
 
 
+def ln_poisson_mode(mu: float) -> float:
+    """Computes ln(P(X = floor(mu))) where X ~ Poisson(mu)."""
+    if mu <= 0.0:
+        return 0.0
+    M = int(mu)
+    if M == 0:
+        return -mu
+    if M < 20:
+        return -mu + M * math.log(mu) - log_gamma(M + 1.0)
+    delta = mu - M
+    corr = M * math.log1p(delta / M) - delta if delta > 0.0 else 0.0
+    return -0.5 * math.log(2.0 * math.pi * M) + corr - 1.0 / (12.0 * M) + 1.0 / (360.0 * M**3)
+
+
 def ncf_power(f_crit: float, df1: float, df2: float, lambda_nc: float) -> float:
     """Noncentral F survival function (Power) = P(F(df1, df2, lambda_nc) >= f_crit).
 
-    SPEC.md Section 3.5:
-    Power = 1 - beta = 1 - F_nc(F_crit; df1, df2, lambda_nc)
-    SPEC.md Section 9.3:
-    Computed via the Poisson-weighted sum of central regularized incomplete beta functions.
+    SPEC.md Section 2.4 & 4.1:
+    Numerically stable calculation across all lambda >= 0 and N <= 2147483647.
+    Evaluates Poisson weights in log space starting at the mode M = floor(lambda/2),
+    with tail cutoff and asymptotic bounds for extreme noncentrality.
     """
+    if math.isnan(f_crit) or math.isnan(lambda_nc):
+        return float("nan")
     if f_crit <= 0.0:
         return 1.0
     if lambda_nc < 0.0:
@@ -178,19 +184,75 @@ def ncf_power(f_crit: float, df1: float, df2: float, lambda_nc: float) -> float:
         return f_sf(f_crit, df1, df2)
 
     x = (df1 * f_crit) / (df1 * f_crit + df2)
-    lam_half = lambda_nc / 2.0
-    power = 0.0
+    if x <= 0.0:
+        return 1.0
+    if x >= 1.0:
+        return 0.0
 
-    weight = math.exp(-lam_half)
-    for j in range(1500):
-        if weight > 1e-35:
-            # P(F >= f_crit) term for degree of freedom (df1 + 2j, df2)
-            term = 1.0 - betai(df1 / 2.0 + j, df2 / 2.0, x)
-            power += weight * term
+    mu = lambda_nc / 2.0
 
-        weight *= lam_half / (j + 1)
-        # Convergence threshold
-        if weight < 1e-16 and j > lam_half:
+    # Tail cutoff & extreme check for large mu
+    if mu > 1000.0:
+        sigma = math.sqrt(mu)
+        j_min = max(0, int(mu - 8.0 * sigma))
+        ix_min = betai(df1 / 2.0 + j_min, df2 / 2.0, x)
+        if ix_min < 1e-15:
+            return 1.0
+        j_max = int(mu + 8.0 * sigma) + 1
+        ix_max = betai(df1 / 2.0 + j_max, df2 / 2.0, x)
+        if 1.0 - ix_max < 1e-15:
+            return 0.0
+
+    M = int(mu)
+    ln_w_M = ln_poisson_mode(mu)
+    w_M = math.exp(ln_w_M)
+
+    T_M = 1.0 - betai(df1 / 2.0 + M, df2 / 2.0, x)
+    power = w_M * T_M
+    w_sum = w_M
+
+    # Expand upward: j = M + 1, M + 2, ...
+    w = w_M
+    j = M
+    while True:
+        j += 1
+        w *= mu / j
+        if w < 1e-18:
             break
+        T_j = 1.0 - betai(df1 / 2.0 + j, df2 / 2.0, x)
+        power += w * T_j
+        w_sum += w
+        if 1.0 - T_j < 1e-16:
+            while True:
+                j += 1
+                w *= mu / j
+                if w < 1e-18:
+                    break
+                power += w
+                w_sum += w
+            break
+
+    # Expand downward: j = M - 1, M - 2, ... 0
+    w = w_M
+    j = M
+    while j > 0:
+        w *= j / mu
+        j -= 1
+        if w < 1e-18:
+            break
+        T_j = 1.0 - betai(df1 / 2.0 + j, df2 / 2.0, x)
+        power += w * T_j
+        w_sum += w
+        if T_j < 1e-16:
+            while j > 0:
+                w *= j / mu
+                j -= 1
+                if w < 1e-18:
+                    break
+                w_sum += w
+            break
+
+    if w_sum > 0.0:
+        power /= w_sum
 
     return min(1.0, max(0.0, power))
