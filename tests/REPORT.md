@@ -8,17 +8,17 @@
 
 ## 1. Executive Summary & Match Rate Overview
 
-Differential testing was conducted across two independent datasets:
-1. **Ground-Truth GUI Oracle Vectors (`oracle/gpower_vectors.csv`):** 46 vectors collected directly from the running `GPowerNT.exe` (v3.1.9.7) binary on Windows using desktop UI automation and verified against window screenshots.
-2. **Independent Library Vectors (`tests/data/library_vectors.csv`):** 2,194 vectors generated from `scipy.stats` / `statsmodels.stats.power` across standard grids and extreme boundary regions.
+Differential testing was conducted across ground-truth GUI oracle datasets and independent library vectors. Ground-truth oracle vectors were collected by script (`pywinauto` against `GPowerNT.exe` on Windows) and their screenshots were checked by me:
+1. **A-Priori GUI Oracle Vectors (`oracle/gpower_vectors.csv`):** 46 rows evaluated. 45/46 rows match G*Power's displayed values; 1 row (v046) intentionally differs because of the official contract (CONTRACT.md Section 5 strictly requires `groups` to be an integer $\ge 2$, so non-integer $k=3.5$ is rejected with `INVALID_VALUE` exit code 2 rather than silently rounded).
+2. **Post-Hoc GUI Oracle Vectors (`oracle/posthoc_vectors.csv`):** The post-hoc oracle has 49 rows and all 49 match (49/49, 100.00%).
+3. **Independent Library Vectors (`tests/data/library_vectors.csv`):** 2,194 vectors generated from `scipy.stats` / `statsmodels.stats.power` across standard grids and extreme boundary regions.
 
 ### Match Rate Summary
 
-| Dataset | Total Vectors | Valid Calculation Vectors | Error / Dialog Vectors | Metric | Exact Match Count | Match Rate (%) | Target >= 90% Reached? |
+| Dataset | Total Vectors | Valid Calculation Vectors | Error / Dialog Vectors | Metric | Exact Match Count | Match Rate / Status | Target >= 90% Reached? |
 |---|---|---|---|---|---|---|---|
-| **GUI Oracle Vectors** (`oracle/gpower_vectors.csv`) | 46 | 36 | 10 | Exact $N$ (and $n_{group}$) | 36 / 36 | **100.00%** | **YES** |
-| **GUI Oracle Vectors** (All outputs: $F_{crit}$, power, $\lambda$, $df_1$, $df_2$) | 46 | 36 | 10 | Exact 7-decimal agreement | 36 / 36 | **100.00%** | **YES** |
-| **GUI Oracle Vectors** (Error handling & rejections) | 46 | 36 | 10 | Exact dialog / contract error | 10 / 10 | **100.00%** | **YES** |
+| **A-Priori GUI Oracle** (`oracle/gpower_vectors.csv`) | 46 | 36 | 10 | Numeric / Dialog outputs | 45 / 46 | 45/46 rows match G*Power's displayed values; 1 row (v046) intentionally differs because of the official contract | **YES** |
+| **Post-Hoc GUI Oracle** (`oracle/posthoc_vectors.csv`) | 49 | 39 | 10 | Exact power, $F_{crit}$, degrees of freedom | 49 / 49 | **100.00%** (all 49 match) | **YES** |
 | **Library Vectors** (Naive Continuous Ceiling: $\lceil N_{lib} \rceil$) | 2,194 | 2,194 | 0 | Exact $N == \lceil N_{lib} \rceil$ | 437 / 2,194 | **19.92%** | **NO** |
 | **Library Vectors** (Group-Balanced Ceiling: $k \cdot \lceil N_{lib} / k \rceil$) | 2,194 | 2,194 | 0 | Exact $N == k \lceil N_{lib} / k \rceil$ | 2,194 / 2,194 | **100.00%** | **YES** |
 
@@ -49,7 +49,7 @@ Every observed divergence or edge-case behavior is classified below into one of 
 
 ### Mismatch & Discrepancy Table
 
-| Issue ID | Tested Row / Dataset | Classification | Related LEDGER.md Row | Description of Divergence | Resolution / Status |
+| Issue ID | Tested Row / Dataset | Classification | Related Finding Row | Description of Divergence | Resolution / Status |
 |---|---|---|---|---|---|
 | **M-001** | `tests/data/library_vectors.csv` (1,757 / 2,194 rows) | `library definition difference` | **L-010** | **Continuous Fractional $N$ vs. Balanced Discrete $N$:** `statsmodels` returns fractional $N$ (e.g. $N=157.1898$ for $k=3$). Naive ceiling gives $158$, but G*Power requires $N$ divisible by $k=3$, yielding $N=159$. | Not a bug. G*Power requires $N = n \cdot k$ ($n \in \mathbb{Z}_{\ge 2}$). Verified: $k \cdot \lceil N_{lib} / k \rceil$ matches with 100% precision. |
 | **M-002** | `tests/data/library_vectors.csv` (Extreme effect sizes $f \ge 2.0$, e.g. $f=5.0$) | `library definition difference` / `G*Power quirk` | **L-011** | **Minimum Sample Size Floor ($N \ge 2k$):** For $f=5.0, k=3$, continuous library solver yields $N=4.9585$ ($df_2=1.9585$). G*Power enforces minimum $n=2$ per group, placing an absolute floor at $N=2k=6$ ($df_2=k=3$). | Handled in engine via search starting bound $n \ge 2$. Consistent with G*Power GUI oracle row `v028` ($f=5.0 \implies N=6$). |
@@ -136,4 +136,4 @@ All 46 vectors were executed via CLI (`python -m src.cli.main --test anova-onewa
 | `v043` | 1 | 0.25 | 0.05 | 0.80 | (Dialog) | (Rejected) | - | - | - | - | - | **PASS** |
 | `v044` | 0 | 0.25 | 0.05 | 0.80 | (Dialog) | (Rejected) | - | - | - | - | - | **PASS** |
 | `v045` | 3 | abc | 0.05 | 0.80 | (Dialog) | (Rejected) | - | - | - | - | - | **PASS** |
-| `v046` | 3.5 | 0.25 | 0.05 | 0.80 | 180 | 180 | 45 | 2.6559389 | 2.6559389 | 0.8039869 | 0.8039869 | **PASS** |
+| `v046` | 3.5 | 0.25 | 0.05 | 0.80 | 180 | (Rejected) | - | 2.6559389 | - | 0.8039869 | - | **PASS** (Intentional contract divergence: G*Power rounds groups=3.5 to 4; contract requires INVALID_VALUE) |
