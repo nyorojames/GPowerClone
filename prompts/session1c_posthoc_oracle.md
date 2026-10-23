@@ -1,0 +1,12 @@
+THIS SESSION: INVESTIGATOR / ORACLE COLLECTOR (post-hoc). You may read everything. Do not touch src/ or tests/.
+
+STEPS
+1. If G*Power 3.1.9.7 is not open, ask me to open it. Using pywinauto (UIA), drive the dropdowns to select: F tests, "ANOVA: Fixed effects, omnibus, one-way", and "Post hoc: Compute achieved power". Dump the control tree (tools/discover_posthoc.py) and show me only a short summary: auto_ids of the 4 input edits, the output edits, and the Calculate button.
+2. Build tools/collect_posthoc.py from tools/collect_oracle.py with the same safeguards: every output value is READ from the window only, never computed or guessed; one screenshot per row; record typed versus displayed inputs; record the exact text of any dialog and close it; if a dialog is only informational and outputs still appear, record BOTH; flag SAME_AS_PREVIOUS_ROW; save the CSV after every row. Inputs: oracle/posthoc_inputs.csv. Output: oracle/posthoc_vectors.csv (ncp, critical_F, df1, df2, power, notes, screenshot_file).
+3. First run ONLY 3 rows: f=0.25, alpha=0.05, k=5 with N=100, then N=101, then N=103. The N=100 row must show ncp 6.25, critical F 2.4674936, df1 4, df2 95, power 0.4663312 exactly. If it does not, STOP and tell me.
+4. Then run all remaining rows unattended. Tell me when the GUI automation starts and ends; I will not touch the mouse or keyboard in between.
+5. Report in plain numbers what G*Power displays for N=101 and N=103 with k=5: does it use N as typed (ncp 6.3125 / 6.4375, df2 96 / 98) or a rounded N? 
+6. Compare every oracle row with the rules in SPEC.md and list each disagreement. Propose amendments, and apply them to SPEC.md ONLY if they describe BEHAVIOUR (no function names, addresses, instruction names, tool names, file paths or internal return codes of the original program) and the GUI values support them. Then run this scan and show the (empty) output:
+   Select-String -Path SPEC.md -Pattern 'FUN_','DAT_','0x','sub_','eax','edx','esp','jmp','jle','cmp ','call ','idiv','divsd','fmul','cvtdq','vtable','disassembl','Ghidra','objdump','Binary Evidence','oracle','gpower_vectors','screenshot','scratch','tools\\','\.py'
+   Fix any line it prints.
+7. Log in HALLUCINATIONS.md every wrong claim that these checks expose (what was claimed, how it was noticed, which check caught it). Add a short note to AGENT_COST.md. Save this prompt verbatim as prompts/session1c_posthoc_oracle.md.

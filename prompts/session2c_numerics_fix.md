@@ -1,0 +1,6 @@
+You are fixing "gpower-clone" so it satisfies the updated SPEC.md. SPEC.md is your only source of truth. You may read src/ and tests/ (your own earlier code). You must NOT read LEDGER.md, HALLUCINATIONS.md, AGENT_COST.md, oracle/, contract/, ContractFile/, ClassTranscript/, tools/, scratch/, prompts/, or any screenshot, and must not use outside knowledge of how G*Power is built or analyse any other software.
+
+1. Make the engine satisfy the new accuracy and boundary rules in SPEC.md. For very large noncentrality, compute the noncentral F probability with a numerically stable method (for example, Poisson weights evaluated in log space starting at the mode, with a tail cutoff), not a series that starts at exp(-lambda/2). No third-party packages in the core engine.
+2. Add a unit test for each new Gherkin scenario, plus extremes: N = 2147483647, k = 100, f = 50, f = 1e-6, alpha = 1e-7, power near 1, tiny f in a-priori. Check no NaN or infinity, power in [0,1], power monotone in N, and each call under 2 seconds. Report the slowest case.
+3. Do not edit SPEC.md and do not change any contract behaviour (names, keys, exit codes). Record any new ambiguity in SPEC_QUESTIONS.md.
+4. Run the complete test suite and report counts. Add a note to AGENT_COST.md and save this prompt verbatim as prompts/session2c_numerics_fix.md.
