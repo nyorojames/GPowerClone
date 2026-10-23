@@ -18,13 +18,14 @@ def get_gpower_app_and_win():
     hwnd_target = None
     def enum_cb(hwnd, extra):
         nonlocal hwnd_target
-        length = user32.GetWindowTextLengthW(hwnd)
-        if length > 0:
-            buff = ctypes.create_unicode_buffer(length + 1)
-            user32.GetWindowTextW(hwnd, buff, length + 1)
-            if "G*Power" in buff.value:
-                hwnd_target = hwnd
-                return False
+        if user32.IsWindowVisible(hwnd):
+            length = user32.GetWindowTextLengthW(hwnd)
+            if length > 0:
+                buff = ctypes.create_unicode_buffer(length + 1)
+                user32.GetWindowTextW(hwnd, buff, length + 1)
+                if buff.value.startswith("G*Power"):
+                    hwnd_target = hwnd
+                    return False
         return True
 
     WNDENUMPROC = ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p)
@@ -116,10 +117,34 @@ def extract_dialog_text_and_dismiss(popup_hwnd, win, screenshot_path):
 
     return full_msg
 
+def ensure_apriori_mode(win):
+    cb_family = win.child_window(auto_id="1000", control_type="ComboBox")
+    cb_test = win.child_window(auto_id="1001", control_type="ComboBox")
+    cb_type = win.child_window(auto_id="1002", control_type="ComboBox")
+
+    fam_val = cb_family.legacy_properties().get("Value", "")
+    if "F tests" not in fam_val:
+        cb_family.select("F tests")
+        time.sleep(0.2)
+
+    test_val = cb_test.legacy_properties().get("Value", "")
+    if "ANOVA: Fixed effects, omnibus, one-way" not in test_val:
+        cb_test.select("ANOVA: Fixed effects, omnibus, one-way")
+        time.sleep(0.2)
+
+    type_val = cb_type.legacy_properties().get("Value", "")
+    if "A priori" not in type_val:
+        user32.SendMessageW(cb_type.handle, 0x014E, 0, 0)
+        parent = user32.GetParent(cb_type.handle)
+        ctrl_id = user32.GetDlgCtrlID(cb_type.handle)
+        user32.SendMessageW(parent, 0x0111, (1 << 16) | ctrl_id, cb_type.handle)
+        time.sleep(0.3)
+
 def collect_oracle(csv_path="oracle/gpower_vectors.csv", screenshot_dir="oracle/screenshots", max_rows=None, start_row=0, target_ids=None):
     os.makedirs(screenshot_dir, exist_ok=True)
     app, win, main_hwnd, pid = get_gpower_app_and_win()
     win.set_focus()
+    ensure_apriori_mode(win)
 
     # Input controls
     edit_f = win.child_window(auto_id="1020", control_type="Edit")
@@ -245,10 +270,11 @@ def collect_oracle(csv_path="oracle/gpower_vectors.csv", screenshot_dir="oracle/
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--csv", type=str, default="oracle/gpower_vectors.csv", help="CSV path")
     parser.add_argument("--rows", type=int, default=None, help="Number of rows to process")
     parser.add_argument("--start", type=int, default=0, help="Row index to start at (0-based)")
     parser.add_argument("--ids", type=str, default=None, help="Comma-separated IDs to process (e.g. v017,v022)")
     args = parser.parse_args()
 
     ids_set = set(args.ids.split(",")) if args.ids else None
-    collect_oracle(max_rows=args.rows, start_row=args.start, target_ids=ids_set)
+    collect_oracle(csv_path=args.csv, max_rows=args.rows, start_row=args.start, target_ids=ids_set)

@@ -1,0 +1,213 @@
+Control Identifiers:
+
+Dialog - 'G*Power 3.1.9.7'    (L78, T78, R698, B821)
+['Dialog', 'G*Power 3.1.9.7Dialog', 'G*Power 3.1.9.7']
+child_window(title="G*Power 3.1.9.7", control_type="Window")
+   | 
+   | Edit - ''    (L287, T510, R378, B533)
+   | ['Effect size fEdit', 'Edit', 'Edit0', 'Edit1']
+   | child_window(auto_id="1020", control_type="Edit")
+   | 
+   | Edit - ''    (L287, T534, R378, B557)
+   | ['Edit2', 'α err probEdit']
+   | child_window(auto_id="1021", control_type="Edit")
+   | 
+   | Edit - ''    (L287, T559, R378, B582)
+   | ['Total sample sizeEdit', 'Edit3']
+   | child_window(auto_id="1022", control_type="Edit")
+   | 
+   | Edit - ''    (L287, T583, R378, B606)
+   | ['Edit4', 'Number of groupsEdit']
+   | child_window(auto_id="1023", control_type="Edit")
+   | 
+   | GroupBox - 'Output Parameters  '    (L391, T495, R683, B782)
+   | ['GroupBox', 'Output Parameters  ', 'Output Parameters  GroupBox', 'GroupBox0', 'GroupBox1']
+   | child_window(title="Output Parameters  ", control_type="Group")
+   | 
+   | GroupBox - 'Input Parameters'    (L93, T495, R385, B782)
+   | ['GroupBox2', 'Input Parameters', 'Input ParametersGroupBox']
+   | child_window(title="Input Parameters", control_type="Group")
+   | 
+   | Static - 'Effect size f'    (L109, T510, R282, B533)
+   | ['Static', 'Effect size fStatic', 'Effect size f', 'Static0', 'Static1']
+   | child_window(title="Effect size f", auto_id="1004", control_type="Text")
+   | 
+   | Static - 'α err prob'    (L109, T534, R282, B557)
+   | ['Static2', 'α err probStatic', 'α err prob']
+   | child_window(title="α err prob", auto_id="1005", control_type="Text")
+   | 
+   | Static - 'Total sample size'    (L109, T559, R282, B582)
+   | ['Static3', 'Total sample size', 'Total sample sizeStatic']
+   | child_window(title="Total sample size", auto_id="1006", control_type="Text")
+   | 
+   | Static - 'Number of groups'    (L109, T583, R282, B606)
+   | ['Static4', 'Number of groups', 'Number of groupsStatic']
+   | child_window(title="Number of groups", auto_id="1007", control_type="Text")
+   | 
+   | Button - 'Determine =>'    (L100, T510, R188, B533)
+   | ['Button', 'Determine =>', 'Determine =>Button', 'Button0', 'Button1']
+   | child_window(title="Determine =>", auto_id="1030", control_type="Button")
+   | 
+   | Static - 'Noncentrality parameter λ'    (L399, T510, R553, B533)
+   | ['Static5', 'Noncentrality parameter λ', 'Noncentrality parameter λStatic']
+   | child_window(title="Noncentrality parameter λ", auto_id="1060", control_type="Text")
+   | 
+   | Static - 'Critical F'    (L399, T534, R553, B557)
+   | ['Static6', 'Critical FStatic', 'Critical F']
+   | child_window(title="Critical F", auto_id="1061", control_type="Text")
+   | 
+   | Static - 'Numerator df'    (L399, T559, R553, B582)
+   | ['Static7', 'Numerator df', 'Numerator dfStatic']
+   | child_window(title="Numerator df", auto_id="1062", control_type="Text")
+   | 
+   | Static - 'Denominator df'    (L399, T583, R553, B606)
+   | ['Static8', 'Denominator dfStatic', 'Denominator df']
+   | child_window(title="Denominator df", auto_id="1063", control_type="Text")
+   | 
+   | Static - 'Power (1-β err prob)'    (L399, T607, R553, B630)
+   | ['Static9', 'Power (1-β err prob)', 'Power (1-β err prob)Static']
+   | child_window(title="Power (1-β err prob)", auto_id="1064", control_type="Text")
+   | 
+   | Edit - 'Parameter 11'    (L560, T510, R674, B533)
+   | ['Edit5', 'Noncentrality parameter λEdit']
+   | child_window(title="Parameter 11", auto_id="1050", control_type="Edit")
+   | 
+   | Edit - ''    (L560, T534, R674, B557)
+   | ['Edit6', 'Critical FEdit']
+   | child_window(auto_id="1051", control_type="Edit")
+   | 
+   | Edit - ''    (L560, T559, R674, B582)
+   | ['Edit7', 'Numerator dfEdit']
+   | child_window(auto_id="1052", control_type="Edit")
+   | 
+   | Edit - ''    (L560, T583, R674, B606)
+   | ['Edit8', 'Denominator dfEdit']
+   | child_window(auto_id="1053", control_type="Edit")
+   | 
+   | Edit - ''    (L560, T607, R674, B630)
+   | ['Edit9', 'Power (1-β err prob)Edit']
+   | child_window(auto_id="1054", control_type="Edit")
+   | 
+   | Button - 'Calculate'    (L595, T785, R683, B809)
+   | ['Button2', 'CalculateButton', 'Calculate']
+   | child_window(title="Calculate", auto_id="1009", control_type="Button")
+   | 
+   | Button - 'X-Y plot for a range of values'    (L377, T785, R584, B809)
+   | ['Button3', 'X-Y plot for a range of valuesButton', 'X-Y plot for a range of values']
+   | child_window(title="X-Y plot for a range of values", auto_id="1020", control_type="Button")
+   | 
+   | GroupBox - 'Test family'    (L93, T390, R195, B439)
+   | ['GroupBox3', 'Test family', 'Test familyGroupBox']
+   | child_window(title="Test family", control_type="Group")
+   | 
+   | GroupBox - 'Type of power analysis'    (L93, T439, R683, B488)
+   | ['GroupBox4', 'Type of power analysisGroupBox', 'Type of power analysis']
+   | child_window(title="Type of power analysis", control_type="Group")
+   | 
+   | GroupBox - 'Statistical test'    (L202, T390, R683, B439)
+   | ['GroupBox5', 'Statistical test', 'Statistical testGroupBox', 'Statistical test0', 'Statistical test1']
+   | child_window(title="Statistical test", control_type="Group")
+   | 
+   | ComboBox - 'Statistical test'    (L100, T407, R189, B430)
+   | ['Statistical testComboBox', 'Statistical test2', 'ComboBox', 'ComboBox0', 'ComboBox1']
+   | child_window(title="Statistical test", auto_id="1000", control_type="ComboBox")
+   |    | 
+   |    | Static - 'Statistical test'    (L3, T3, R69, B20)
+   |    | ['Static10', 'Statistical testStatic', 'Statistical test3']
+   |    | child_window(title="Statistical test", control_type="Text")
+   |    | 
+   |    | Button - 'Open'    (L173, T408, R188, B429)
+   |    | ['Button4', 'OpenButton', 'Open', 'OpenButton0', 'OpenButton1', 'Open0', 'Open1']
+   |    | child_window(title="Open", auto_id="DropDown", control_type="Button")
+   | 
+   | ComboBox - ''    (L210, T407, R676, B430)
+   | ['ComboBoxClose', 'ComboBox2', 'ComboBoxClose0', 'ComboBoxClose1']
+   | child_window(auto_id="1001", control_type="ComboBox")
+   |    | 
+   |    | Static - ''    (L3, T3, R446, B20)
+   |    | ['Static11']
+   |    | 
+   |    | Button - 'Open'    (L660, T408, R675, B429)
+   |    | ['Button5', 'OpenButton2', 'Open2']
+   |    | child_window(title="Open", auto_id="DropDown", control_type="Button")
+   | 
+   | ComboBox - ''    (L100, T456, R676, B479)
+   | ['ComboBoxClose2', 'ComboBox3']
+   | child_window(auto_id="1002", control_type="ComboBox")
+   |    | 
+   |    | Static - ''    (L3, T3, R556, B20)
+   |    | ['Static12']
+   |    | 
+   |    | Button - 'Open'    (L660, T457, R675, B478)
+   |    | ['Button6', 'OpenButton3', 'Open3']
+   |    | child_window(title="Open", auto_id="DropDown", control_type="Button")
+   | 
+   | TabControl - ''    (L93, T131, R686, B390)
+   | ['TabControl', 'TabControlProtocol of power analyses']
+   | child_window(auto_id="1041", control_type="Tab")
+   |    | 
+   |    | TabItem - 'Central and noncentral distributions'    (L95, T133, R302, B153)
+   |    | ['TabItem', 'Central and noncentral distributionsTabItem', 'Central and noncentral distributions', 'TabItem0', 'TabItem1']
+   |    | child_window(title="Central and noncentral distributions", control_type="TabItem")
+   |    | 
+   |    | TabItem - 'Protocol of power analyses'    (L302, T133, R458, B153)
+   |    | ['Protocol of power analyses', 'Protocol of power analysesTabItem', 'TabItem2']
+   |    | child_window(title="Protocol of power analyses", control_type="TabItem")
+   | 
+   | Image - ''    (L100, T161, R678, B380)
+   | ['Image']
+   | child_window(auto_id="1042", control_type="Image")
+   |    | 
+   |    | Pane - ''    (L101, T162, R677, B379)
+   |    | ['Pane']
+   | 
+   | TitleBar - ''    (L102, T81, R690, B109)
+   | ['TitleBar']
+   |    | 
+   |    | Menu - 'System'    (L86, T86, R108, B108)
+   |    | ['System', 'SystemMenu', 'Menu', 'System0', 'System1', 'Menu0', 'Menu1']
+   |    | child_window(title="System", auto_id="MenuBar", control_type="MenuBar")
+   |    |    | 
+   |    |    | MenuItem - 'System'    (L86, T86, R108, B108)
+   |    |    | ['System2', 'MenuItem', 'SystemMenuItem', 'MenuItem0', 'MenuItem1']
+   |    |    | child_window(title="System", control_type="MenuItem")
+   |    | 
+   |    | Button - 'Minimize'    (L551, T79, R598, B109)
+   |    | ['Button7', 'MinimizeButton', 'Minimize']
+   |    | child_window(title="Minimize", control_type="Button")
+   |    | 
+   |    | Button - 'Maximize'    (L598, T79, R644, B109)
+   |    | ['Button8', 'Maximize', 'MaximizeButton']
+   |    | child_window(title="Maximize", control_type="Button")
+   |    | 
+   |    | Button - 'Close'    (L644, T79, R691, B109)
+   |    | ['Button9', 'CloseButton', 'Close']
+   |    | child_window(title="Close", control_type="Button")
+   | 
+   | Menu - 'Application'    (L86, T109, R690, B128)
+   | ['Application', 'ApplicationMenu', 'Menu2']
+   | child_window(title="Application", auto_id="MenuBar", control_type="MenuBar")
+   |    | 
+   |    | MenuItem - 'File'    (L86, T109, R118, B128)
+   |    | ['File', 'MenuItem2', 'FileMenuItem']
+   |    | child_window(title="File", control_type="MenuItem")
+   |    | 
+   |    | MenuItem - 'Edit'    (L118, T109, R152, B128)
+   |    | ['Edit10', 'MenuItem3', 'EditMenuItem']
+   |    | child_window(title="Edit", control_type="MenuItem")
+   |    | 
+   |    | MenuItem - 'View'    (L152, T109, R191, B128)
+   |    | ['ViewMenuItem', 'View', 'MenuItem4']
+   |    | child_window(title="View", control_type="MenuItem")
+   |    | 
+   |    | MenuItem - 'Tests'    (L191, T109, R231, B128)
+   |    | ['MenuItem5', 'TestsMenuItem', 'Tests']
+   |    | child_window(title="Tests", control_type="MenuItem")
+   |    | 
+   |    | MenuItem - 'Calculator'    (L231, T109, R299, B128)
+   |    | ['MenuItem6', 'CalculatorMenuItem', 'Calculator']
+   |    | child_window(title="Calculator", control_type="MenuItem")
+   |    | 
+   |    | MenuItem - 'Help'    (L299, T109, R338, B128)
+   |    | ['HelpMenuItem', 'MenuItem7', 'Help']
+   |    | child_window(title="Help", control_type="MenuItem")
