@@ -1,0 +1,207 @@
+gpower-clone Demo Execution Transcript
+Generated: 2026-10-23 11:43:48
+======================================================================
+
+[2026-10-23 11:43:41] COMMAND: python -m unittest tests/differential/test_differential.py
+EXIT CODE: 0
+ELAPSED: 9173.0 ms (9.173 s)
+STDOUT:
+Differential Verification Results:
+  Total oracle rows evaluated: 46
+  Rows matching G*Power values: 45/46
+  Intentional contract divergence: v046 (G*Power rounds groups=3.5 to 4; contract requires INVALID_VALUE)
+  Failed: 0
+
+Differential Verification Results (Post-Hoc):
+  Total oracle rows evaluated: 49
+  Valid calculation rows: 39
+  Error / boundary rejection rows: 10
+  Passed: 49
+  Failed: 0
+  Overall Match Rate: 100.00%
+STDERR:
+..
+----------------------------------------------------------------------
+Ran 2 tests in 8.963s
+
+OK
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:46] COMMAND: python tests/run_all.py
+EXIT CODE: 0
+ELAPSED: 5165.0 ms (5.165 s)
+STDOUT:
+
+STDERR:
+test_betai_boundary_conditions (tests.unit.test_distributions.TestDistributions.test_betai_boundary_conditions) ... ok
+test_central_f_distribution_consistency (tests.unit.test_distributions.TestDistributions.test_central_f_distribution_consistency) ... ok
+test_f_inv_sf_inverts_sf (tests.unit.test_distributions.TestDistributions.test_f_inv_sf_inverts_sf) ... ok
+test_log_gamma_known_values (tests.unit.test_distributions.TestDistributions.test_log_gamma_known_values) ... ok
+test_ncf_power_reduces_to_central_f_when_lambda_zero (tests.unit.test_distributions.TestDistributions.test_ncf_power_reduces_to_central_f_when_lambda_zero) ... ok
+test_a_priori_sample_size_divisibility (tests.unit.test_engine.TestEngine.test_a_priori_sample_size_divisibility)
+SPEC.md Section 4.2: N_total is a multiple of group count k. ... ok
+test_boundary_exclusive_values_rejected (tests.unit.test_engine.TestEngine.test_boundary_exclusive_values_rejected)
+SPEC.md Section 2.3 & 5.2: Values outside inclusive bounds rejected. ... ok
+test_boundary_inclusive_values_accepted (tests.unit.test_engine.TestEngine.test_boundary_inclusive_values_accepted)
+SPEC.md Section 2.3 & 5.2 item 2: Exact boundary inclusivity. ... ok
+test_calculate_a_priori_pure_functional_interface (tests.unit.test_engine.TestEngine.test_calculate_a_priori_pure_functional_interface)
+Pure functional interface returning structured result or error. ... ok
+test_extremes_a_priori_tiny_f (tests.unit.test_engine.TestEngine.test_extremes_a_priori_tiny_f)
+Tiny f in a-priori mode: should either find solution or raise NO_SOLUTION. ... ok
+test_extremes_post_hoc_values (tests.unit.test_engine.TestEngine.test_extremes_post_hoc_values)
+Extremes: N = 2147483647, k = 100, f = 50, f = 1e-6, alpha = 1e-7, power near 1. ... ok
+test_input_validation_invalid_alpha (tests.unit.test_engine.TestEngine.test_input_validation_invalid_alpha)
+SPEC.md Section 5.1 v039/v040. ... ok
+test_input_validation_invalid_groups (tests.unit.test_engine.TestEngine.test_input_validation_invalid_groups)
+SPEC.md Section 5.1 v043/v044. ... ok
+test_input_validation_negative_f (tests.unit.test_engine.TestEngine.test_input_validation_negative_f)
+SPEC.md Section 5.1 v042. ... ok
+test_input_validation_non_integer_groups (tests.unit.test_engine.TestEngine.test_input_validation_non_integer_groups)
+SPEC.md Section 5.2 item 1. ... ok
+test_input_validation_zero_f (tests.unit.test_engine.TestEngine.test_input_validation_zero_f)
+SPEC.md Section 5.1 v041. ... ok
+test_post_hoc_inconsistent_sample_size (tests.unit.test_engine.TestEngine.test_post_hoc_inconsistent_sample_size)
+SPEC.md Section 4.3 & 5.1: N_total <= k produces INCONSISTENT. ... ok
+test_post_hoc_power (tests.unit.test_engine.TestEngine.test_post_hoc_power)
+SPEC.md Section 4.1 & 4.3 formulas. ... ok
+test_power_monotone_in_sample_size (tests.unit.test_engine.TestEngine.test_power_monotone_in_sample_size)
+Statistical power must be non-decreasing with respect to total sample size N. ... ok
+test_error_handling_inconsistent_parameters_power_less_than_alpha (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_inconsistent_parameters_power_less_than_alpha)
+Scenario: Error Handling - Inconsistent Parameters (Power Less Than Alpha) (SPEC.md Section 6.1). ... ok
+test_error_handling_invalid_value_float_for_integer_group_count (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_invalid_value_float_for_integer_group_count)
+Scenario: Error Handling - Invalid Value (Float for Integer Group Count) (SPEC.md Section 6.1). ... ok
+test_error_handling_missing_required_parameter (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_missing_required_parameter)
+Scenario: Error Handling - Missing Required Parameter (SPEC.md Section 6.1). ... ok
+test_error_handling_out_of_range_alpha_boundary (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_out_of_range_alpha_boundary)
+Scenario: Error Handling - Out of Range Alpha Boundary (SPEC.md Section 6.1). ... ok
+test_error_handling_out_of_range_effect_size (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_out_of_range_effect_size)
+Scenario: Error Handling - Out of Range Effect Size (SPEC.md Section 6.1). ... ok
+test_error_handling_post_hoc_sample_size_less_than_or_equal_to_groups (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_post_hoc_sample_size_less_than_or_equal_to_groups)
+Scenario: Error Handling - Post-Hoc Sample Size Less Than or Equal to Groups (SPEC.md Section 6.1). ... ok
+test_error_handling_unknown_irrelevant_parameter_in_post_hoc (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_unknown_irrelevant_parameter_in_post_hoc)
+Scenario: Error Handling - Unknown / Irrelevant Parameter in Post-Hoc (SPEC.md Section 6.1). ... ok
+test_error_handling_unsupported_test_family (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_error_handling_unsupported_test_family)
+Scenario: Error Handling - Unsupported Test Family (SPEC.md Section 6.1). ... ok
+test_official_vector_anova_oneway_a_priori (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_official_vector_anova_oneway_a_priori)
+Scenario: Official Vector - anova-oneway a-priori (SPEC.md Section 6.2). ... ok
+test_official_vector_anova_oneway_compromise_deferred_later (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_official_vector_anova_oneway_compromise_deferred_later)
+Scenario: Official Vector - anova-oneway compromise (Deferred / Later) (SPEC.md Section 6.2). ... ok
+test_official_vector_anova_oneway_criterion_deferred_later (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_official_vector_anova_oneway_criterion_deferred_later)
+Scenario: Official Vector - anova-oneway criterion (Deferred / Later) (SPEC.md Section 6.2). ... ok
+test_official_vector_anova_oneway_post_hoc (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_official_vector_anova_oneway_post_hoc)
+Scenario: Official Vector - anova-oneway post-hoc (SPEC.md Section 6.2). ... ok
+test_official_vector_anova_oneway_sensitivity_deferred_later (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_official_vector_anova_oneway_sensitivity_deferred_later)
+Scenario: Official Vector - anova-oneway sensitivity (Deferred / Later) (SPEC.md Section 6.2). ... ok
+test_post_hoc_asymptotic_power_at_large_sample_size_n_100000 (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_post_hoc_asymptotic_power_at_large_sample_size_n_100000)
+Scenario: Post-Hoc Asymptotic Power at Large Sample Size N = 100000 (SPEC.md Section 6.3). ... ok
+test_post_hoc_asymptotic_power_at_large_sample_size_n_1000000 (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_post_hoc_asymptotic_power_at_large_sample_size_n_1000000)
+Scenario: Post-Hoc Asymptotic Power at Large Sample Size N = 1000000 (SPEC.md Section 6.3). ... ok
+test_post_hoc_asymptotic_power_at_large_sample_size_n_10000000 (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_post_hoc_asymptotic_power_at_large_sample_size_n_10000000)
+Scenario: Post-Hoc Asymptotic Power at Large Sample Size N = 10000000 (SPEC.md Section 6.3). ... ok
+test_post_hoc_calculation_with_sample_size_not_divisible_by_groups (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_post_hoc_calculation_with_sample_size_not_divisible_by_groups)
+Scenario: Post-Hoc Calculation with Sample Size Not Divisible by Groups (SPEC.md Section 6.1). ... ok
+test_post_hoc_lower_significance_boundary_alpha_1e_7 (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_post_hoc_lower_significance_boundary_alpha_1e_7)
+Scenario: Post-Hoc Lower Significance Boundary Alpha = 1e-7 (SPEC.md Section 6.3). ... ok
+test_post_hoc_maximum_admissible_effect_size_boundary_f_50 (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_post_hoc_maximum_admissible_effect_size_boundary_f_50)
+Scenario: Post-Hoc Maximum Admissible Effect Size Boundary f = 50.0 (SPEC.md Section 6.3). ... ok
+test_version_query (tests.unit.test_gherkin_scenarios.TestGherkinScenarios.test_version_query)
+Scenario: Version Query (SPEC.md Section 6.1). ... ok
+test_cli_boundary_admissibility_and_rejections (tests.contract.test_cli_contract.TestCliContract.test_cli_boundary_admissibility_and_rejections)
+SPEC.md Section 2.3 & 5.2: Admissible boundary values and out-of-range rejections. ... ok
+test_determinism (tests.contract.test_cli_contract.TestCliContract.test_determinism)
+SPEC.md Section 2.1: Identical inputs unconditionally produce bitwise identical output. ... ok
+test_inconsistent_post_hoc_sample_size_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_inconsistent_post_hoc_sample_size_returns_exit_code_2)
+SPEC.md Section 3.2 & 4.3: n_total <= groups produces INCONSISTENT. ... ok
+test_inconsistent_power_less_than_alpha_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_inconsistent_power_less_than_alpha_returns_exit_code_2)
+SPEC.md Section 3.2 & 5.1 v035: power < alpha produces INCONSISTENT. ... ok
+test_invalid_value_non_integer_group_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_invalid_value_non_integer_group_returns_exit_code_2)
+SPEC.md Section 3.2 & 5.2 item 1: Float for integer field produces INVALID_VALUE. ... ok
+test_invalid_value_non_numeric_f_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_invalid_value_non_numeric_f_returns_exit_code_2)
+SPEC.md Section 3.2 & 5.1 v045: Non-numeric string produces INVALID_VALUE. ... ok
+test_missing_required_param_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_missing_required_param_returns_exit_code_2)
+SPEC.md Section 3.2: Missing required field produces MISSING_PARAM and exit code 2. ... ok
+test_out_of_range_alpha_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_out_of_range_alpha_returns_exit_code_2)
+SPEC.md Section 3.2 & 5.1 v039/v040: alpha outside (1e-7, 1) produces OUT_OF_RANGE. ... ok
+test_out_of_range_effect_size_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_out_of_range_effect_size_returns_exit_code_2)
+SPEC.md Section 3.2 & 5.1 v041/v042: f outside (1e-6, 50] produces OUT_OF_RANGE. ... ok
+test_out_of_range_groups_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_out_of_range_groups_returns_exit_code_2)
+SPEC.md Section 3.2 & 5.1 v043/v044: groups < 2 produces OUT_OF_RANGE. ... ok
+test_output_key_names_and_integer_types_a_priori (tests.contract.test_cli_contract.TestCliContract.test_output_key_names_and_integer_types_a_priori)
+SPEC.md Section 2.3 & 2.4: Exact key names and exact integer types. ... ok
+test_output_key_names_and_integer_types_post_hoc (tests.contract.test_cli_contract.TestCliContract.test_output_key_names_and_integer_types_post_hoc)
+SPEC.md Section 2.3 & 2.4: Post-hoc key names and exact integer types. ... ok
+test_stdout_single_line_json_and_exit_code_zero_on_success (tests.contract.test_cli_contract.TestCliContract.test_stdout_single_line_json_and_exit_code_zero_on_success)
+SPEC.md Section 2.1: Exactly one line of JSON on stdout, nothing else, exit code 0. ... ok
+test_timing_worst_cases_under_two_seconds (tests.contract.test_cli_contract.TestCliContract.test_timing_worst_cases_under_two_seconds)
+SPEC.md Section 2.1: Execution must finish within 2.0 seconds per invocation. ... ok
+test_unknown_or_mode_irrelevant_param_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_unknown_or_mode_irrelevant_param_returns_exit_code_2)
+SPEC.md Section 3.2: Mode-irrelevant parameter produces UNKNOWN_PARAM and exit code 2. ... ok
+test_unsupported_mode_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_unsupported_mode_returns_exit_code_2)
+SPEC.md Section 3.2 Table: Unknown mode produces UNSUPPORTED. ... ok
+test_unsupported_test_family_returns_exit_code_2 (tests.contract.test_cli_contract.TestCliContract.test_unsupported_test_family_returns_exit_code_2)
+SPEC.md Section 3.2 & 6.1 Scenario 9: Unsupported test produces UNSUPPORTED. ... ok
+test_version_query (tests.contract.test_cli_contract.TestCliContract.test_version_query)
+SPEC.md Section 2.2: Version query returns exact single-line JSON, exit code 0. ... ok
+
+----------------------------------------------------------------------
+Ran 57 tests in 4.985s
+
+OK
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:46] COMMAND: python -m src.cli.main --version
+EXIT CODE: 0
+ELAPSED: 106.9 ms (0.107 s)
+STDOUT:
+{"contract_version":"1.0.0","name":"K3-solo","engine":"Python 3.12"}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:47] COMMAND: python -m src.cli.main --test anova-oneway --mode a-priori --f 0.25 --alpha 0.05 --power 0.95 --groups 5
+EXIT CODE: 0
+ELAPSED: 89.3 ms (0.089 s)
+STDOUT:
+{"ncp":19.0625,"critical_f":2.4017396963214033,"df1":4,"df2":300,"n_total":305,"actual_power":0.9521313274143547,"n_per_group":61}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:47] COMMAND: python -m src.cli.main --test anova-oneway --mode post-hoc --f 0.25 --alpha 0.05 --n_total 100 --groups 5
+EXIT CODE: 0
+ELAPSED: 89.5 ms (0.090 s)
+STDOUT:
+{"ncp":6.25,"critical_f":2.4674936234496414,"df1":4,"df2":95,"power":0.4663312026231519,"n_per_group":20}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:47] COMMAND: python -m src.cli.main --test anova-oneway --mode a-priori --f 0.25 --alpha 0.05 --power 0.8 --groups 3
+EXIT CODE: 0
+ELAPSED: 91.0 ms (0.091 s)
+STDOUT:
+{"ncp":9.9375,"critical_f":3.054004173787952,"df1":2,"df2":156,"n_total":159,"actual_power":0.8048872853010647,"n_per_group":53}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:47] COMMAND: python -m src.cli.main --test anova-oneway --mode post-hoc --f 0.25 --alpha 0.05 --n_total 101 --groups 5
+EXIT CODE: 0
+ELAPSED: 104.4 ms (0.104 s)
+STDOUT:
+{"ncp":6.3125,"critical_f":2.4664763403081125,"df1":4,"df2":96,"power":0.4708495372740968,"n_per_group":20}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:47] COMMAND: python -m src.cli.main --test anova-oneway --mode a-priori --f 0.25 --alpha 0.05 --power 0.01 --groups 3
+EXIT CODE: 2
+ELAPSED: 99.8 ms (0.100 s)
+STDOUT:
+{"error":"Power must be greater than or equal to alpha","code":"INCONSISTENT","field":"power"}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:48] COMMAND: python -m src.cli.main --test anova-oneway --mode a-priori --f 0.25 --alpha 0.05 --power 0.8
+EXIT CODE: 2
+ELAPSED: 129.6 ms (0.130 s)
+STDOUT:
+{"error":"Missing required parameter '--groups'","code":"MISSING_PARAM","field":"groups"}
+----------------------------------------------------------------------
+
+[2026-10-23 11:43:48] COMMAND: python -m src.cli.main --test anova-oneway --mode post-hoc --f 0.25 --alpha 0.05 --n_total 100 --groups 3 --power 0.8
+EXIT CODE: 2
+ELAPSED: 107.2 ms (0.107 s)
+STDOUT:
+{"error":"Unknown or mode-irrelevant parameter '--power'","code":"UNKNOWN_PARAM","field":"power"}
+----------------------------------------------------------------------
+
