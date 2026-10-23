@@ -1,0 +1,92 @@
+﻿id,f,alpha,n_total,groups,f_typed,alpha_typed,n_total_typed,groups_typed,f_displayed,alpha_displayed,n_total_displayed,groups_displayed,ncp,critical_F,df1,df2,power,notes,screenshot_file,probe
+p001,0.25,0.05,100,5,0.25,0.05,100,5,0.25,0.05,100,5,6.2500000,2.4674936,4,95,0.4663312,,p001.png,instructor public vector anova-oneway/post-hoc
+p002,0.25,0.05,101,5,0.25,0.05,101,5,0.25,0.05,101,5,6.3125000,2.4664763,4,96,0.4708495,"Dialog: The total sample size (101) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p002.png,NOT multiple of k (101 % 5 == 1; k=5)
+p003,0.25,0.05,103,5,0.25,0.05,103,5,0.25,0.05,103,5,6.4375000,2.4645054,4,98,0.4798381,"Dialog: The total sample size (103) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p003.png,NOT multiple of k (103 % 5 == 3; k=5)
+p004,0.1,0.05,150,3,0.1,0.05,150,3,0.1,0.05,150,3,1.5000000,3.0576207,2,147,0.1755287,,p004.png,typical small effect; multiple of 3 (150/3=50)
+p005,0.25,0.05,150,3,0.25,0.05,150,3,0.25,0.05,150,3,9.3750000,3.0576207,2,147,0.7795803,,p005.png,typical medium effect; multiple of 3 (150/3=50)
+p006,0.4,0.05,90,3,0.4,0.05,90,3,0.4,0.05,90,3,14.4000000,3.1012958,2,87,0.9263674,,p006.png,typical large effect; multiple of 3 (90/3=30)
+p007,0.25,0.01,200,4,0.25,0.01,200,4,0.25,0.01,200,4,12.5000000,3.8830840,3,196,0.6600656,,p007.png,stricter alpha 0.01; multiple of 4 (200/4=50)
+p008,0.25,0.10,120,4,0.25,0.10,120,4,0.25,0.10,120,4,7.5000000,2.1316060,3,116,0.7246060,,p008.png,relaxed alpha 0.10; multiple of 4 (120/4=30)
+p009,0.25,0.05,60,5,0.25,0.05,60,5,0.25,0.05,60,5,3.7500000,2.5396886,4,55,0.2777719,,p009.png,multiple of k (60 % 5 == 0)
+p010,0.25,0.05,61,5,0.25,0.05,61,5,0.25,0.05,61,5,3.8125000,2.5365794,4,56,0.2825288,"Dialog: The total sample size (61) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p010.png,NOT multiple of k (61 % 5 == 1; remainder 1; average group size 12.2)
+p011,0.25,0.05,62,5,0.25,0.05,62,5,0.25,0.05,62,5,3.8750000,2.5335833,4,57,0.2872917,"Dialog: The total sample size (62) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p011.png,NOT multiple of k (62 % 5 == 2; remainder 2; average group size 12.4)
+p012,0.25,0.05,63,5,0.25,0.05,63,5,0.25,0.05,63,5,3.9375000,2.5306942,4,58,0.2920598,"Dialog: The total sample size (63) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p012.png,NOT multiple of k (63 % 5 == 3; remainder 3; average group size 12.6)
+p013,0.25,0.05,64,5,0.25,0.05,64,5,0.25,0.05,64,5,4.0000000,2.5279066,4,59,0.2968323,"Dialog: The total sample size (64) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p013.png,NOT multiple of k (64 % 5 == 4; remainder 4; average group size 12.8)
+p014,0.25,0.05,65,5,0.25,0.05,65,5,0.25,0.05,65,5,4.0625000,2.5252151,4,60,0.3016086,,p014.png,multiple of k (65 % 5 == 0; baseline for 61-64 comparison)
+p015,0.25,0.05,100,3,0.25,0.05,100,3,0.25,0.05,100,3,6.2500000,3.0901867,2,97,0.5885389,"Dialog: The total sample size (100) is not a multiple of
+the number of groups (3). The analysis was 
+based on the average group size.",p015.png,NOT multiple of k (100 % 3 == 1; k=3)
+p016,0.25,0.05,101,3,0.25,0.05,101,3,0.25,0.05,101,3,6.3125000,3.0892030,2,98,0.5932390,"Dialog: The total sample size (101) is not a multiple of
+the number of groups (3). The analysis was 
+based on the average group size.",p016.png,NOT multiple of k (101 % 3 == 2; k=3)
+p017,0.25,0.05,102,3,0.25,0.05,102,3,0.25,0.05,102,3,6.3750000,3.0882396,2,99,0.5979034,,p017.png,multiple of k (102 % 3 == 0; k=3)
+p018,0.25,0.05,5,5,0.25,0.05,5,5,0.25,0.05,5,5,,,,,,"Dialog: Sample size must be greater than
+the number of groups (5).",p018.png,boundary N = k (df2 = 0; expected refusal)
+p019,0.25,0.05,6,5,0.25,0.05,6,5,0.25,0.05,6,5,0.3750000,224.5832,4,1,0.0523035,"Dialog: The total sample size (6) is not a multiple of
+the number of groups (5). The analysis was 
+based on the average group size.",p019.png,boundary N = k + 1 (df2 = 1; minimal valid N for k=5)
+p020,0.25,0.05,4,5,0.25,0.05,4,5,0.25,0.05,4,5,,,,,,"Dialog: Sample size must be greater than
+the number of groups (5).",p020.png,boundary N = k - 1 (df2 = -1; expected refusal)
+p021,0.25,0.05,2,5,0.25,0.05,2,5,0.25,0.05,2,5,,,,,,"Dialog: Sample size must be greater than
+the number of groups (5).",p021.png,boundary N = 2 < k (expected refusal)
+p022,0.25,0.05,1,5,0.25,0.05,1,5,0.25,0.05,1,5,,,,,,"Dialog: Sample size must be greater than
+the number of groups (5).",p022.png,boundary N = 1 (expected refusal)
+p023,0.25,0.05,0,5,0.25,0.05,0,5,0.25,0.05,0,5,,,,,,"Dialog: Sample size must be greater than
+the number of groups (5).",p023.png,boundary N = 0 (expected refusal)
+p024,0.25,0.05,2,2,0.25,0.05,2,2,0.25,0.05,2,2,,,,,,"Dialog: Sample size must be greater than
+the number of groups (2).",p024.png,boundary N = k for k=2 (df2 = 0; expected refusal)
+p025,0.25,0.05,3,2,0.25,0.05,3,2,0.25,0.05,3,2,0.1875000,161.4476,1,1,0.0545958,"Dialog: The total sample size (3) is not a multiple of
+the number of groups (2). The analysis was 
+based on the average group size.",p025.png,boundary N = k + 1 for k=2 (df2 = 1; absolute minimal valid N)
+p026,0.25,0.05,1,2,0.25,0.05,1,2,0.25,0.05,1,2,,,,,,"Dialog: Sample size must be greater than
+the number of groups (2).",p026.png,boundary N = k - 1 for k=2 (N=1; expected refusal)
+p027,0.25,0.05,0,2,0.25,0.05,0,2,0.25,0.05,0,2,,,,,,"Dialog: Sample size must be greater than
+the number of groups (2).",p027.png,boundary N = 0 for k=2 (expected refusal)
+p028,0.25,0.05,100,2,0.25,0.05,100,2,0.25,0.05,100,2,6.2500000,3.9381111,1,98,0.6968934,,p028.png,k = 2 minimum valid groups; multiple (100 % 2 == 0)
+p029,0.25,0.05,101,2,0.25,0.05,101,2,0.25,0.05,101,2,6.3125000,3.9371169,1,99,0.7012785,"Dialog: The total sample size (101) is not a multiple of
+the number of groups (2). The analysis was 
+based on the average group size.",p029.png,k = 2 minimum valid groups; NOT multiple (101 % 2 == 1)
+p030,0.25,0.05,200,20,0.25,0.05,200,20,0.25,0.05,200,20,12.5000000,1.6446313,19,180,0.4798837,,p030.png,k = 20 large group count; multiple (200 % 20 == 0)
+p031,0.25,0.05,205,20,0.25,0.05,205,20,0.25,0.05,205,20,12.8125000,1.6430541,19,185,0.4935198,"Dialog: The total sample size (205) is not a multiple of
+the number of groups (20). The analysis was 
+based on the average group size.",p031.png,k = 20 large group count; NOT multiple (205 % 20 == 5)
+p032,0.25,0.05,21,20,0.25,0.05,21,20,0.25,0.05,21,20,1.3125000,247.6861,19,1,0.0516982,"Dialog: The total sample size (21) is not a multiple of
+the number of groups (20). The analysis was 
+based on the average group size.",p032.png,k = 20 boundary N = k + 1 (df2 = 1; minimal valid N for k=20)
+p033,0.25,0.05,20,20,0.25,0.05,20,20,0.25,0.05,20,20,,,,,,"Dialog: Sample size must be greater than
+the number of groups (20).",p033.png,k = 20 boundary N = k (df2 = 0; expected refusal)
+p034,0.25,0.05,500,100,0.25,0.05,500,100,0.25,0.05,500,100,31.2500000,1.2842194,99,400,0.5502696,,p034.png,k = 100 very large group count; multiple (500 % 100 == 0)
+p035,0.25,0.05,555,100,0.25,0.05,555,100,0.25,0.05,555,100,34.6875000,1.2795643,99,455,0.6257007,"Dialog: The total sample size (555) is not a multiple of
+the number of groups (100). The analysis was 
+based on the average group size.",p035.png,k = 100 very large group count; NOT multiple (555 % 100 == 55)
+p036,0.25,0.05,101,100,0.25,0.05,101,100,0.25,0.05,101,100,6.3125000,253.0282,99,1,0.0515677,"Dialog: The total sample size (101) is not a multiple of
+the number of groups (100). The analysis was 
+based on the average group size.",p036.png,k = 100 boundary N = k + 1 (df2 = 1; minimal valid N for k=100)
+p037,0.25,0.05,100,100,0.25,0.05,100,100,0.25,0.05,100,100,,,,,,"Dialog: Sample size must be greater than
+the number of groups (100).",p037.png,k = 100 boundary N = k (df2 = 0; expected refusal)
+p038,0.25,0.05,100000,5,0.25,0.05,100000,5,0.25,0.05,100000,5,6250,2.3720211,4,99995,1.0000000,,p038.png,huge N = 1e5; tests asymptotic power and large N stability
+p039,0.25,0.05,1000000,5,0.25,0.05,1000000,5,0.25,0.05,1000000,5,62500,2.3719411,4,999995,1.0000000,,p039.png,huge N = 1e6; tests 1 million observations
+p040,0.25,0.05,10000000,5,0.25,0.05,10000000,5,0.25,0.05,10000000,5,625000,2.3719331,4,9999995,1.0000000,,p040.png,huge N = 1e7; tests 10 million observations
+p041,0.1,0.05,100000,3,0.1,0.05,100000,3,0.1,0.05,100000,3,1000,2.9958220,2,99997,1.0000000,"Dialog: The total sample size (100000) is not a multiple of
+the number of groups (3). The analysis was 
+based on the average group size.",p041.png,huge N = 1e5 NOT multiple of k (100000 % 3 == 1)
+p042,0.001,0.05,1000,5,0.001,0.05,1000,5,0.001,0.05,1000,5,0.001,2.3808758,4,995,0.0500487,,p042.png,boundary case: tiny effect size f = 0.001
+p043,0.00001,0.05,1000,5,0.00001,0.05,1000,5,0.00001,0.05,1000,5,1e-07,2.3808758,4,995,0.0500000,,p043.png,boundary case: extreme tiny effect size f = 1e-5
+p044,1.0,0.05,50,5,1.0,0.05,50,5,1.0,0.05,50,5,50.0000000,2.5787392,4,45,0.9999597,,p044.png,boundary case: large effect size f = 1.0
+p045,5.0,0.05,30,5,5.0,0.05,30,5,5.0,0.05,30,5,750,2.7587105,4,25,1.0000000,,p045.png,boundary case: extreme large effect size f = 5.0 (power -> 1.0)
+p046,50.0,0.05,10,5,50.0,0.05,10,5,50.0,0.05,10,5,25000,5.1921678,4,5,1.0000000,,p046.png,boundary case: maximum admissible effect size f = 50.0
+p047,0.25,0.0001,200,5,0.25,0.0001,200,5,0.25,0.0001,200,5,12.5000000,6.2138584,4,195,0.1470581,,p047.png,boundary case: strict alpha = 0.0001
+p048,0.25,0.5,100,5,0.25,0.5,100,5,0.25,0.5,100,5,6.2500000,0.8451938,4,95,0.9155284,,p048.png,boundary case: large alpha = 0.5
+p049,0.25,0.0000001,100,5,0.25,0.0000001,100,5,0.25,0.0000001,100,5,6.2500000,11.6273196,4,95,0.0002068239,,p049.png,boundary case: near lower bound alpha = 1e-7

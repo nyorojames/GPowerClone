@@ -1,0 +1,50 @@
+f,alpha,n_total,groups,probe
+0.25,0.05,100,5,instructor public vector anova-oneway/post-hoc
+0.25,0.05,101,5,NOT multiple of k (101 % 5 == 1; k=5)
+0.25,0.05,103,5,NOT multiple of k (103 % 5 == 3; k=5)
+0.1,0.05,150,3,typical small effect; multiple of 3 (150/3=50)
+0.25,0.05,150,3,typical medium effect; multiple of 3 (150/3=50)
+0.4,0.05,90,3,typical large effect; multiple of 3 (90/3=30)
+0.25,0.01,200,4,stricter alpha 0.01; multiple of 4 (200/4=50)
+0.25,0.10,120,4,relaxed alpha 0.10; multiple of 4 (120/4=30)
+0.25,0.05,60,5,multiple of k (60 % 5 == 0)
+0.25,0.05,61,5,NOT multiple of k (61 % 5 == 1; remainder 1; average group size 12.2)
+0.25,0.05,62,5,NOT multiple of k (62 % 5 == 2; remainder 2; average group size 12.4)
+0.25,0.05,63,5,NOT multiple of k (63 % 5 == 3; remainder 3; average group size 12.6)
+0.25,0.05,64,5,NOT multiple of k (64 % 5 == 4; remainder 4; average group size 12.8)
+0.25,0.05,65,5,multiple of k (65 % 5 == 0; baseline for 61-64 comparison)
+0.25,0.05,100,3,NOT multiple of k (100 % 3 == 1; k=3)
+0.25,0.05,101,3,NOT multiple of k (101 % 3 == 2; k=3)
+0.25,0.05,102,3,multiple of k (102 % 3 == 0; k=3)
+0.25,0.05,5,5,boundary N = k (df2 = 0; expected refusal)
+0.25,0.05,6,5,boundary N = k + 1 (df2 = 1; minimal valid N for k=5)
+0.25,0.05,4,5,boundary N = k - 1 (df2 = -1; expected refusal)
+0.25,0.05,2,5,boundary N = 2 < k (expected refusal)
+0.25,0.05,1,5,boundary N = 1 (expected refusal)
+0.25,0.05,0,5,boundary N = 0 (expected refusal)
+0.25,0.05,2,2,boundary N = k for k=2 (df2 = 0; expected refusal)
+0.25,0.05,3,2,boundary N = k + 1 for k=2 (df2 = 1; absolute minimal valid N)
+0.25,0.05,1,2,boundary N = k - 1 for k=2 (N=1; expected refusal)
+0.25,0.05,0,2,boundary N = 0 for k=2 (expected refusal)
+0.25,0.05,100,2,k = 2 minimum valid groups; multiple (100 % 2 == 0)
+0.25,0.05,101,2,k = 2 minimum valid groups; NOT multiple (101 % 2 == 1)
+0.25,0.05,200,20,k = 20 large group count; multiple (200 % 20 == 0)
+0.25,0.05,205,20,k = 20 large group count; NOT multiple (205 % 20 == 5)
+0.25,0.05,21,20,k = 20 boundary N = k + 1 (df2 = 1; minimal valid N for k=20)
+0.25,0.05,20,20,k = 20 boundary N = k (df2 = 0; expected refusal)
+0.25,0.05,500,100,k = 100 very large group count; multiple (500 % 100 == 0)
+0.25,0.05,555,100,k = 100 very large group count; NOT multiple (555 % 100 == 55)
+0.25,0.05,101,100,k = 100 boundary N = k + 1 (df2 = 1; minimal valid N for k=100)
+0.25,0.05,100,100,k = 100 boundary N = k (df2 = 0; expected refusal)
+0.25,0.05,100000,5,huge N = 1e5; tests asymptotic power and large N stability
+0.25,0.05,1000000,5,huge N = 1e6; tests 1 million observations
+0.25,0.05,10000000,5,huge N = 1e7; tests 10 million observations
+0.1,0.05,100000,3,huge N = 1e5 NOT multiple of k (100000 % 3 == 1)
+0.001,0.05,1000,5,boundary case: tiny effect size f = 0.001
+0.00001,0.05,1000,5,boundary case: extreme tiny effect size f = 1e-5
+1.0,0.05,50,5,boundary case: large effect size f = 1.0
+5.0,0.05,30,5,boundary case: extreme large effect size f = 5.0 (power -> 1.0)
+50.0,0.05,10,5,boundary case: maximum admissible effect size f = 50.0
+0.25,0.0001,200,5,boundary case: strict alpha = 0.0001
+0.25,0.5,100,5,boundary case: large alpha = 0.5
+0.25,0.0000001,100,5,boundary case: near lower bound alpha = 1e-7

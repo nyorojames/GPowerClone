@@ -1,0 +1,3 @@
+id,mode,k_groups,effect_size_f,alpha,power,total_N,df1,df2,noncentrality,critical_F,actual_power,screenshot_file,probes,gui_message_or_notes
+b001,a-priori,5,0.25,0.0000001,0.0000001,10,4,5,0.6250000,1300.172,1.420922e-07,b001.png,boundary test: power lower bound = 1e-7 (alpha = 1e-7),
+b002,a-priori,3,0.000001,0.05,0.05,9,2,6,9e-12,5.1432528,0.0500000,b002.png,boundary test: effect size f lower bound = 1e-6,
