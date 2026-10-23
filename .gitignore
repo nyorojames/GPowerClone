@@ -27,7 +27,12 @@ env/
 .env
 tools/__pycache__/
 scratch/
+# Classroom & Reference files
+ContractFile/
 ClassTranscript/
+
+# Demo frame captures
+demo/frame_*.png
 
 # OS artifacts
 Thumbs.db
